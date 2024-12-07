@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 
 namespace Labwork_4
@@ -23,7 +23,7 @@ namespace Labwork_4
             Console.WriteLine("Ви бажаєте заповнити масив випадковим чином чи вручну?");
             Console.WriteLine("1 - Випадковим чином");
             Console.WriteLine("2 - Вручну");
-            int choice = GetUserChoice(1, 2);
+            int choice = GetUserChoice();
 
             if (choice == 1)
             {
@@ -34,7 +34,7 @@ namespace Labwork_4
                 Console.WriteLine("Ви бажаєте вводити елементи в окремих рядках чи одним рядком?");
                 Console.WriteLine("1 - Окремими рядками");
                 Console.WriteLine("2 - Одним рядком");
-                int inputMethod = GetUserChoice(1, 2);
+                int inputMethod = GetUserChoice();
 
                 if (inputMethod == 1)
                     return GetArrayFromUserByLines();
@@ -153,18 +153,21 @@ namespace Labwork_4
             Console.WriteLine();
         }
 
-        static int GetUserChoice(int min, int max)
+        static int GetUserChoice()
         {
-            int choice;
-            do
-            {
-                Console.Write($"Введiть число вiд {min} до {max}: ");
-            } while (!int.TryParse(Console.ReadLine(), out choice) || choice < min || choice > max);
-
-            return choice;
+            while (true)
+            { 
+                 Console.Write("Введiть 1 або 2: ");
+                 string input = Console.ReadLine();
+                 if (input == "1" || input == "2")
+                 {
+                     return int.Parse(input);
+                 }
+                 Console.WriteLine("Помилка: введiть тiльки 1 або 2.");
+             }
+            
         }
     }
 
 }
-
 
